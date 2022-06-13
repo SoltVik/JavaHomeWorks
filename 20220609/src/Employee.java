@@ -1,10 +1,10 @@
 public class Employee {
-    protected String fullName;
-    protected String position;
-    protected String email;
-    protected String phoneNumber;
-    protected int salary;
-    protected int age;
+    private String fullName;
+    private String position;
+    private String email;
+    private String phoneNumber;
+    private int salary;
+    private int age;
 
     public Employee(String fullName, String position, String email, String phoneNumber, int salary, int age) {
         this.fullName = fullName;
