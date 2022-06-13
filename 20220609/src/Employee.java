@@ -22,6 +22,10 @@ public class Employee {
         this.age = age;
     }
 
+    public int getAge() {
+        return this.age;
+    }
+
     @Override
     public String toString() {
         return(fullName + ", " + position + ", " + email + ", " + phoneNumber + ", " + salary + ", " + age);
