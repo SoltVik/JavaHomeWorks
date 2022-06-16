@@ -14,22 +14,20 @@
 public class Animals {
     public static void main(String[] args) {
         IAnimal[] animals = {
-                new Cat("Barsik", "White", 2),
-                new Dog("Polkan", "Black", 5),
-                new Cat("Murzik", "Red", 3),
-                new Cat("Sonik", "Brown", 3),
-                new Cat("Rizik", "Orange", 1),
-                new Dog("Muhtar", "Grey", 2),
-                new Dog("Zuza", "Red", 4)
+                new Cat(200),
+                new Dog(500, 10),
         };
 
         for (IAnimal animal : animals) {
-            int randomSwim = (int) ((Math.random() * (10 - 1)) + 1);
-            int randomRun = (int) ((Math.random() * (550 - 150)) + 150);
-            System.out.println(animal.run(animal.getName(), randomRun) + " & " + animal.swim(animal.getName(), randomSwim) + " ");
+            System.out.println(animal);
+            System.out.println(animal.run(150));
+            System.out.println(animal.run(500));
+            System.out.println(animal.run(550));
+            System.out.println(animal.swim(5));
+            System.out.println(animal.swim(15) + "\n");
         }
 
-        System.out.printf("\nWe have %d animals: %d cats and %d dogs", Animal.getCounter(), Cat.getCounter(), Dog.getCounter());
+        System.out.printf("We have %d animals: %d cats and %d dogs", Animal.getCounter(), Cat.getCounter(), Dog.getCounter());
     }
 
 }
