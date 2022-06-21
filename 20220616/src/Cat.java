@@ -10,10 +10,8 @@ public class Cat {
 
     public boolean eat(Plate plate) {
         if (hungry) {
-            if (plate.decreaseFood(appetit)) {
-                hungry = false;
-                return true;
-            }
+            hungry = !(plate.decreaseFood(appetit));
+            return !(hungry);
         }
         return false;
     }
