@@ -1,18 +1,17 @@
 import java.util.Arrays;
 
 public class RubberArray {
-    private int [] array;
+    private int [] array = new int[0];
 
     public void add(int value) {
-        if (array == null) {
-            array = new int[1];
-            array[0] = value;
-        } else {
-            int[] newArray = new int[array.length + 1];
-            System.arraycopy(array, 0, newArray, 0, array.length);
-            newArray[array.length] = value;
-            array = newArray;
-        }
+        addAll(value);
+    }
+
+    public void addAll(int... arrayValue) {
+        int[] newArray = new int[array.length + arrayValue.length];
+        System.arraycopy(array, 0 , newArray, 0, array.length);
+        System.arraycopy(arrayValue, 0, newArray, array.length, arrayValue.length);
+        array = newArray;
     }
 
     public Integer get(int index) {
@@ -24,7 +23,7 @@ public class RubberArray {
     }
 
     public int size() {
-        return (array == null) ? 0 : array.length;
+        return array.length;
     }
 
     public void remove(int index) {
@@ -39,7 +38,7 @@ public class RubberArray {
     }
 
     public Integer getMax () {
-        if (array != null) {
+        if (array.length > 0) {
             int maxValue = array[0];
             for (int element : array) {
                 if (element > maxValue) {
@@ -52,7 +51,7 @@ public class RubberArray {
     }
 
     public Integer getMin () {
-        if (array != null) {
+        if (array.length > 0) {
             int minValue = array[0];
             for (int element : array) {
                 if (element < minValue) {
@@ -65,7 +64,7 @@ public class RubberArray {
     }
 
     public Double average () {
-        if (array != null) {
+        if (array.length > 0) {
             double average = 0;
             for (int element : array) {
                 average += element;

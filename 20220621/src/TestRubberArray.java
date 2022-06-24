@@ -13,9 +13,7 @@ public class TestRubberArray {
     public static void main(String[] args) {
         RubberArray ra = new RubberArray();
 
-        ra.add(25);
-        ra.add(15);
-        ra.add(10);
+        ra.addAll(25,15,10);
         ra.add(25);
 
         System.out.println("Array size " + ra.size() + ": " + ra);
