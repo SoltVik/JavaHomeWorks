@@ -15,6 +15,7 @@ public class TestRubberArray {
 
         ra.addAll(25,15,10);
         ra.add(25);
+        ra.set(2,20);
 
         System.out.println("Array size " + ra.size() + ": " + ra);
         System.out.println("Maximal value: " + ra.getMax());

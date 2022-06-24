@@ -22,19 +22,25 @@ public class RubberArray {
         }
     }
 
+    public void set(int index, int value) {
+        if (index < array.length) {
+            array[index] = value;
+        }
+    }
+
     public int size() {
         return array.length;
     }
 
-    public void remove(int index) {
-        if (array != null) {
-            if (index < array.length) {
-                int[] newArray = new int[array.length - 1];
-                System.arraycopy(array, 0, newArray, 0, index);
-                System.arraycopy(array, index + 1, newArray, index, array.length - index - 1);
-                array = newArray;
-            }
+    public boolean remove(int index) {
+        if (index < array.length) {
+            int[] newArray = new int[array.length - 1];
+            System.arraycopy(array, 0, newArray, 0, index);
+            System.arraycopy(array, index + 1, newArray, index, array.length - index - 1);
+            array = newArray;
+            return true;
         }
+        return false;
     }
 
     public Integer getMax () {
@@ -76,6 +82,6 @@ public class RubberArray {
 
     @Override
     public String toString(){
-        return (array == null) ? "[]" : Arrays.toString(array);
+        return Arrays.toString(array);
     }
 }
