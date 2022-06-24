@@ -3,6 +3,13 @@ import java.util.Arrays;
 public class RubberArray {
     private int [] array = new int[0];
 
+    RubberArray(int... arrayValue) {
+        addAll(arrayValue);
+    }
+
+    RubberArray() {
+    }
+
     public void add(int value) {
         addAll(value);
     }

@@ -11,10 +11,10 @@
 */
 public class TestRubberArray {
     public static void main(String[] args) {
-        RubberArray ra = new RubberArray();
+        RubberArray ra = new RubberArray(5,10,15);
 
-        ra.addAll(25,15,10);
-        ra.add(25);
+        ra.addAll(20,25);
+        ra.add(30);
         ra.set(2,20);
 
         System.out.println("Array size " + ra.size() + ": " + ra);
