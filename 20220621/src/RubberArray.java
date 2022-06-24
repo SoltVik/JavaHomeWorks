@@ -64,9 +64,9 @@ public class RubberArray {
         return null;
     }
 
-    public Integer average () {
+    public Double average () {
         if (array != null) {
-            int average = 0;
+            double average = 0;
             for (int element : array) {
                 average += element;
             }
