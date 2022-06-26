@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.stream.IntStream;
 
 public class RubberArray implements Iterable {
     private int[] array = new int[0];
@@ -13,6 +14,21 @@ public class RubberArray implements Iterable {
 
     public void add(int value) {
         addAll(value);
+    }
+
+    public boolean add(int index, int... arrayValue) {
+        if (index < array.length && index >= 0) {
+            int[] newArray = new int[array.length + arrayValue.length];
+            System.arraycopy(array, 0 , newArray, 0, index);
+            System.arraycopy(arrayValue, 0, newArray, index, arrayValue.length);
+            System.arraycopy(array, index, newArray, index+arrayValue.length, array.length-index);
+            array = newArray;
+            return true;
+        } else if (index == array.length) {
+            addAll(arrayValue);
+            return true;
+        }
+        return false;
     }
 
     public void addAll(int... arrayValue) {
@@ -88,6 +104,10 @@ public class RubberArray implements Iterable {
             return average / array.length;
         }
         return null;
+    }
+
+    public boolean contains(int value) {
+        return IntStream.of(array).anyMatch(x -> x == value);
     }
 
     @Override

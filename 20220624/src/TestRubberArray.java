@@ -21,5 +21,14 @@ public class TestRubberArray {
         for (Object i : ra) {
             System.out.print(((Integer) i + 1) + " ");
         }
+
+        System.out.println("\n");
+
+        int[] tempArray = {3,3,3,3};
+        ra.add(1,tempArray);
+        System.out.println(ra);
+        System.out.println(ra.contains(25));
+        System.out.println(ra.contains(50));
+        System.out.println(ra.contains(3));
     }
 }
