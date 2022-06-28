@@ -13,10 +13,24 @@ public class RubberArray implements Iterable {
     }
 
     public void add(int value) {
-        addAll(value);
+        int[] newArray = new int[array.length + 1];
+        System.arraycopy(array, 0 , newArray, 0, array.length);
+        newArray[newArray.length - 1] = value;
+        array = newArray;
     }
 
-    public boolean add(int index, int... arrayValue) {
+    public boolean add(int index, int value) {
+        return addAll(index, value);
+    }
+
+    public void addAll(int[] arrayValue) {
+        int[] newArray = new int[array.length + arrayValue.length];
+        System.arraycopy(array, 0 , newArray, 0, array.length);
+        System.arraycopy(arrayValue, 0, newArray, array.length, arrayValue.length);
+        array = newArray;
+    }
+
+    public boolean addAll (int index, int... arrayValue) {
         if (index < array.length && index >= 0) {
             int[] newArray = new int[array.length + arrayValue.length];
             System.arraycopy(array, 0 , newArray, 0, index);
@@ -29,13 +43,6 @@ public class RubberArray implements Iterable {
             return true;
         }
         return false;
-    }
-
-    public void addAll(int... arrayValue) {
-        int[] newArray = new int[array.length + arrayValue.length];
-        System.arraycopy(array, 0 , newArray, 0, array.length);
-        System.arraycopy(arrayValue, 0, newArray, array.length, arrayValue.length);
-        array = newArray;
     }
 
     public Integer get(int index) {

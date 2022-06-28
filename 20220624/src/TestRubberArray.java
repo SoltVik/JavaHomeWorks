@@ -1,7 +1,7 @@
 /**
  * Java. Homework #5
  * @author Viktors Soltums
- * @version 24 Jun 2022
+ * @version 25 Jun 2022
  *
  */
 public class TestRubberArray {
@@ -25,7 +25,8 @@ public class TestRubberArray {
         System.out.println("\n");
 
         int[] tempArray = {3,3,3,3};
-        ra.add(1,tempArray);
+        ra.addAll(1,tempArray);
+        ra.add(3,5);
         System.out.println(ra);
         System.out.println(ra.contains(25));
         System.out.println(ra.contains(50));
