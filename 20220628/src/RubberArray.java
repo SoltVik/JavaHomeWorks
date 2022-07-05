@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class RubberArray<E> implements Iterable{
+public class RubberArray<E> implements Iterable<E>{
     private Object[] array = new Object[0];
 
 
@@ -45,9 +45,9 @@ public class RubberArray<E> implements Iterable{
         return false;
     }
 
-    public Object get(int index) {
+    public E get(int index) {
         if ((index >= 0) && (index < array.length)) {
-            return array[index];
+            return (E)array[index];
         } else {
             return null;
         }
@@ -91,7 +91,7 @@ public class RubberArray<E> implements Iterable{
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<E> iterator() {
         return new Itr();
     }
 
@@ -104,8 +104,8 @@ public class RubberArray<E> implements Iterable{
         }
 
         @Override
-        public Object next() {
-            return array[pointer++];
+        public E next() {
+            return (E)array[pointer++];
         }
     }
 
