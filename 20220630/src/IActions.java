@@ -1,10 +1,8 @@
 public interface IActions {
 
     String getName();
-    void run();
-    void jump();
-    boolean ran(Obstacle o);
-    boolean jumped(Obstacle o);
+    boolean run(int meters);
+    boolean jump(int height);
 
     default void printResult(String member, String action, boolean past, int meters, int limit) {
         if (past) {

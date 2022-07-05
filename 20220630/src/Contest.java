@@ -24,7 +24,7 @@ public class Contest {
 
         };
 
-        Obstacle[] obstacles = {
+        IObstacle[] obstacles = {
                 new Wall(1),
                 new Wall(3),
                 new Wall(4),
@@ -39,18 +39,11 @@ public class Contest {
         for (IActions member : members) {
             int i = 0;
             System.out.println(member + "\n-----");
-            for (Obstacle obstacle : obstacles) {
-                if (obstacle.getClassName().equals("Wall")) {
-                    if (!member.jumped(obstacle)) {
-                        break;
-                    }
-                    i++;
-                } else {
-                    if (!member.ran(obstacle)) {
-                        break;
-                    }
-                    i++;
+            for (IObstacle obstacle : obstacles) {
+                if (!obstacle.exec(member)) {
+                    break;
                 }
+                i++;
                 if (i == totalObstacles) {
                     System.out.println(member.getName() + " successfully past all obstacles!");
                 }

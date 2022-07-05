@@ -18,28 +18,16 @@ public class Cat implements IActions {
     }
 
     @Override
-    public void run() {
-        System.out.println(className + "ran");
-    }
-
-    @Override
-    public void jump() {
-        System.out.println(className + "jumped");
-    }
-
-    @Override
-    public boolean ran(Obstacle o) {
-        int meters = o.getLength();
-        boolean past = (meters <= runLimit);
-        printResult(className + number, "ran", past, meters, runLimit);
+    public boolean run(int length) {
+        boolean past = (length <= runLimit);
+        printResult(className + number, "ran", past, length, runLimit);
         return past;
     }
 
     @Override
-    public boolean jumped(Obstacle o) {
-        int meters = o.getLength();
-        boolean past = (meters <= jumpLimit);
-        printResult(className + number, "jumped", past, meters, jumpLimit);
+    public boolean jump(int height) {
+        boolean past = (height <= jumpLimit);
+        printResult(className + number, "jumped", past, height, jumpLimit);
         return past;
     }
 
