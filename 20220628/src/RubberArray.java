@@ -95,7 +95,7 @@ public class RubberArray<E> implements Iterable<E>{
         return new Itr();
     }
 
-    private class Itr implements Iterator {
+    private class Itr implements Iterator<E> {
         private int pointer = 0;
 
         @Override
