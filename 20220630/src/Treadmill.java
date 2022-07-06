@@ -13,7 +13,7 @@ public class Treadmill implements IObstacle {
 
     @Override
     public boolean exec(IActions member){
-        return member.run(length);
+        return member.run(length, className);
     }
 
     @Override

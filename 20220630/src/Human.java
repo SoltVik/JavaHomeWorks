@@ -18,16 +18,16 @@ public class Human implements IActions {
     }
 
     @Override
-    public boolean run(int length) {
+    public boolean run(int length, String obstacle) {
         boolean past = (length <= runLimit);
-        printResult(className + number, "ran", past, length, runLimit);
+        printResult(className + number, new String[]{"run", "ran", "length"}, past, obstacle, length, runLimit);
         return past;
     }
 
     @Override
-    public boolean jump(int height) {
+    public boolean jump(int height, String obstacle) {
         boolean past = (height <= jumpLimit);
-        printResult(className + number, "jumped", past, height, jumpLimit);
+        printResult(className + number, new String[]{"jump", "jumped", "height"}, past, obstacle, height, jumpLimit);
         return past;
     }
 

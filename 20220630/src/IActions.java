@@ -1,22 +1,14 @@
 public interface IActions {
 
     String getName();
-    boolean run(int meters);
-    boolean jump(int height);
+    boolean run(int meters, String obstacle);
+    boolean jump(int height, String obstacle);
 
-    default void printResult(String member, String action, boolean past, int meters, int limit) {
+    default void printResult(String member, String[] action, boolean past, String obstacle, int meters, int limit) {
         if (past) {
-            System.out.printf("%s %s %d meters\n", member, action, meters);
+            System.out.printf("%s %s %d meters\n", member, action[1], meters);
         } else {
-            String obstacle;
-            if (action.equals("ran")) {
-                action = "ran maximal";
-                obstacle = "Treadmill";
-            } else {
-                action = "jump maximum";
-                obstacle = "Wall";
-            }
-            System.out.printf("%s can %s %d meters, but %s is %d meters\n", member, action, limit, obstacle, meters);
+            System.out.printf("%s %s limit is %d meters, but %s %s is %d meters\n", member, action[0], limit, obstacle, action[2], meters);
         }
     }
 }

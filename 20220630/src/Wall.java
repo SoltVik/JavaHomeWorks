@@ -13,7 +13,7 @@ public class Wall implements IObstacle {
 
     @Override
     public boolean exec(IActions member){
-        return member.jump(height);
+        return member.jump(height, className);
     }
 
     @Override
