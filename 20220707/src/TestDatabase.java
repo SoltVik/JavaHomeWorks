@@ -26,7 +26,7 @@ public class TestDatabase {
                     break;
                 case "c":
                     System.out.print("db> create ");
-                    database.create(Employee.createEmployee());
+                    database.create(Employee.scanEmployee());
                     break;
                 case "r":
                     System.out.println(database.read());
@@ -35,7 +35,7 @@ public class TestDatabase {
                     System.out.print("db> select ");
                     String oldName = scanner.next();
                     System.out.print("db> " + oldName + " update ");
-                    database.update(oldName, Employee.createEmployee());
+                    database.update(oldName, Employee.scanEmployee());
                     break;
                 case "d":
                     System.out.print("db> delete ");
@@ -48,7 +48,8 @@ public class TestDatabase {
                     System.out.println(database.find(name));
                     break;
                 case "p":
-                    System.out.println(database.getPositions());
+                    //System.out.println(database.getPositions());
+                    database.printList();
                     break;
             }
         }

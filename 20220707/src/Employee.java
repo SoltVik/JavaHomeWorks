@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
     private String name;
     private String position;
     private int salary;
@@ -14,7 +14,7 @@ public class Employee {
         this.age = age;
     }
 
-    public static Employee createEmployee() {
+    public static Employee scanEmployee() {
         Scanner scanner = new Scanner(System.in);
 
         String name = scanner.next();
@@ -33,6 +33,10 @@ public class Employee {
         return position;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -41,5 +45,11 @@ public class Employee {
                 ", salary=" + salary +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        //return this.getName().compareTo(o.getName());
+        return this.getAge() - o.getAge();
     }
 }
