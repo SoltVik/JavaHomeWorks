@@ -1,4 +1,3 @@
-import java.util.*;
 /**
  * Java. Homework #12 part 2
  *

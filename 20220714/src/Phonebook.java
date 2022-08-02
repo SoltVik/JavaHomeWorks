@@ -1,22 +1,20 @@
 import java.util.*;
 
 public class Phonebook {
-    Map<String, ArrayList<String>> phoneMap = new HashMap<>();
+    private Map<String, Set<String>> phoneMap = new HashMap<>();
 
     public void init() {
-        phoneMap.computeIfAbsent("John", k ->new ArrayList<>()).add("123456");
-        phoneMap.computeIfAbsent("Joy", k ->new ArrayList<>()).add("123457");
-        phoneMap.computeIfAbsent("Mark", k ->new ArrayList<>()).add("123458");
-        phoneMap.computeIfAbsent("Karl", k ->new ArrayList<>()).add("123459");
+        phoneMap.computeIfAbsent("John", k ->new HashSet<>()).add("123456");
+        phoneMap.computeIfAbsent("Joy", k ->new HashSet<>()).add("123457");
+        phoneMap.computeIfAbsent("Mark", k ->new HashSet<>()).add("123458");
+        phoneMap.computeIfAbsent("Karl", k ->new HashSet<>()).add("123459");
     }
 
 public void add(String name, String number) {
-    if (!phoneMap.get(name).contains(number)) {
-        phoneMap.computeIfAbsent(name, k -> new ArrayList<>()).add(number);
-    }
+    phoneMap.computeIfAbsent(name, k -> new HashSet<>()).add(number);
 }
 
-public List<String> get(String name) {
+public Set<String> get(String name) {
     return phoneMap.get(name);
     }
 
