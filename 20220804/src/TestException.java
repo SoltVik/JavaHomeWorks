@@ -22,6 +22,13 @@ public class TestException {
     }
 
     public boolean wrongArraySize (String[][] array, int lines, int columns) {
-        return !((array.length == lines) && (array[0].length == columns));
+        if (array.length == lines) {
+            for (String[] strings : array) {
+                if (strings.length != columns) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
