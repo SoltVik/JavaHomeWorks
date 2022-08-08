@@ -28,7 +28,8 @@ public class TestException {
                     return true;
                 }
             }
+            return false;
         }
-        return false;
+        return true;
     }
 }
