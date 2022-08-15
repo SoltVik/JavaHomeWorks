@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class testArray {
+public class TestArray {
     CheckArray checkArray = new CheckArray();
 
     @BeforeEach
