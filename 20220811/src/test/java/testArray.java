@@ -45,12 +45,4 @@ public class testArray {
         out.add(Arguments.arguments(new Integer[] { 1, 4, 4, 1, 1, 4, 3 }, false));
         return out.stream();
     }
-
-
-
-   /* @ParameterizedTest
-    public void parametrizedTestAdd(Integer[] array, int number, Integer result) {
-        //System.out.println(Arrays.toString(array));
-        //Assertions.assertEquals(result, checkArray.getAllAfterLastNumber(array, number));
-    }*/
 }
