@@ -5,7 +5,7 @@ public class CheckArray {
 
     public Integer[] getAllAfterLastNumber (Integer[] array, int number) {
         if (!containsInArray(array, number)) {
-            throw new RuntimeException();
+            throw new RuntimeException("The array doesn't contain a number: " + number);
         }
 
         int idx = lastIndexOf(array, number);
