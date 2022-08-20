@@ -27,17 +27,21 @@ public class Homework18 {
 
     public static void main(String[] args) {
         float[] array = new float[SIZE];
+        float[] array1;
         fillArrayWith(array, 1.0f);
 
         long startTime = System.currentTimeMillis();
-        getNewValueForElements(array);
+        setNewValueForElements(array, 0);
 
         System.out.println("One thread time: " + (System.currentTimeMillis() - startTime) + " ms.");
 
         startTime = System.currentTimeMillis();
-        array = splitMergeAndFillArray();
+        array1 = splitMergeAndFillArray();
 
         System.out.println("Two thread time: " + (System.currentTimeMillis() - startTime) + " ms.");
+        
+        System.out.println((Arrays.equals(array, array1)) ? "Both arrays equals" : "Arrays not equals");
+
 
     }
 
@@ -45,10 +49,10 @@ public class Homework18 {
         Arrays.fill(array, value);
     }
 
-    public static void getNewValueForElements(float[] array) {
+    public static void setNewValueForElements(float[] array, int startPosition) {
         IntStream
                 .range(0, array.length)
-                .forEach(i -> array[i] = (float) (array[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2)));
+                .forEach(i -> array[i] = (float) (array[i] * Math.sin(0.2f + (i + startPosition) / 5) * Math.cos(0.2f + (i + startPosition) / 5) * Math.cos(0.4f + (i + startPosition) / 2)));
     }
 
     public static float[] splitMergeAndFillArray() {
@@ -64,11 +68,11 @@ public class Homework18 {
         System.arraycopy(array, lengthLeftHalf, rightHalf, 0, lengthRightHalf);
 
         Thread t0 = new Thread(() -> {
-            getNewValueForElements(leftHalf);
+            setNewValueForElements(leftHalf, 0);
         });
 
         Thread t1 = new Thread(() -> {
-            getNewValueForElements(rightHalf);
+            setNewValueForElements(rightHalf, lengthLeftHalf);
         });
 
 
