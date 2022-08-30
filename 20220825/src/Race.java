@@ -19,7 +19,7 @@ public class Race {
 
     public static void main(String[] args) {
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Подготовка!!!");
-        Track track = new Track(new Road(60), new Tunnel(), new Road(40));
+        Track track = new Track(new Road(60), new Tunnel(80), new Road(40));
 
         stageCount = track.getStages().size();
 

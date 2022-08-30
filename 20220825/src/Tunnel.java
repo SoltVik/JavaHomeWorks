@@ -3,11 +3,11 @@ import java.util.concurrent.Semaphore;
 public class Tunnel implements Stage {
     protected int length;
     protected String description;
-    Semaphore smp = new Semaphore(Race.CARS_COUNT / 2);
+    Semaphore smp = new Semaphore(Race.CARS_COUNT / 2, true);
     private Object monitor = new Object();
 
-    public Tunnel() {
-        this.length = 80;
+    public Tunnel(int length) {
+        this.length = length;
         this.description = "Тоннель " + length + " метров";
     }
 
