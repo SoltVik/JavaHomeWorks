@@ -26,7 +26,7 @@ public class EchoClient {
                 msg = scanner.nextLine();
                 writer.println(msg);
                 writer.flush();
-                //System.out.println(reader.readLine());
+                System.out.println(reader.readLine());
             } while (!msg.equals("exit"));
 
         } catch(IOException ex) {

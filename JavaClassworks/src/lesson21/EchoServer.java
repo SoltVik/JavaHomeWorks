@@ -28,6 +28,7 @@ public class EchoServer {
                 do {
                     msg = reader.readLine();
                     writer.println("Echo: " + msg);
+                    writer.flush();
                     System.out.println("Client: " + msg);
                 } while (!msg.equals("exit"));
 
