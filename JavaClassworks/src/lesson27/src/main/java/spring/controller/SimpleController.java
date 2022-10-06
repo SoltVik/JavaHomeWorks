@@ -4,9 +4,11 @@ import domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import spring.service.TestService;
@@ -59,8 +61,7 @@ public class SimpleController {
         String lastName = person.getLastName();
 
         if (firstName != null && firstName.length() > 0 && lastName != null && lastName.length() > 0) {
-            Person newPerson = new Person(firstName, lastName);
-            persons.add(newPerson);
+            persons.add(person);
 
             return "redirect:/list";
         }
@@ -69,5 +70,45 @@ public class SimpleController {
         return "add";
     }
 
+    @GetMapping("/update")
+    public String updateRedirect() {
+        return "redirect:/list";
+    }
+    @GetMapping("/update/{id}")
+    public String updatePersonForm(Model model, @PathVariable Integer id) {
+        model.addAttribute("persons", persons);
+        Person person = persons.get(id);
+        model.addAttribute("person", person);
+        return "update";
+    }
 
+    @RequestMapping(value = { "/update/{id}" }, method = RequestMethod.POST)
+    public String updatePerson(Model model, @ModelAttribute("person") Person person, @PathVariable Integer id) {
+
+        String firstName = person.getFirstName();
+        String lastName = person.getLastName();
+
+        if (firstName != null && firstName.length() > 0 && lastName != null && lastName.length() > 0) {
+            persons.set(id, person);
+
+            return "redirect:/list";
+        }
+
+        model.addAttribute("errorMessage", "First Name & Last Name is required!");
+        return "update";
+    }
+
+   /* @RequestMapping("/delete")
+    public String deletePerson(int id){
+        persons.remove(id);
+        return "redirect:/list";
+    }*/
+
+    @PostMapping(value = {"/delete"})
+
+    public String deletePerson(int id) {
+
+        persons.remove(id);
+        return "redirect:/list";
+    }
 }
