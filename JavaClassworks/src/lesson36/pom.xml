@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
-            <version>0.2.1</version>
+            <version>0.2.4</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -101,12 +101,13 @@
                             </inputSpec>
                             <generatorName>spring</generatorName>
                             <apiPackage>spring.controller</apiPackage>
-                            <modelPackage>spring.domain</modelPackage>
-                            <supportingFilesToGenerate>
-                               RestApi.java
-                            </supportingFilesToGenerate>
+                            <modelPackage>spring.controller.vo</modelPackage>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <generateApiTests>false</generateApiTests>
+                            <supportingFilesToGenerate>RestApi.java</supportingFilesToGenerate>
                             <configOptions>
                                 <interfaceOnly>true</interfaceOnly>
+                                <useTags>true</useTags>
                                 <java8>false</java8>
                             </configOptions>
                         </configuration>

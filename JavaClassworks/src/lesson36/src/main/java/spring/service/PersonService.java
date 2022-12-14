@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.controller.vo.PersonVO;
 import spring.domain.Person;
 import spring.repository.PersonRepository;
 
@@ -36,17 +37,22 @@ public class PersonService {
         return personRepository.findByFirstName(firstName);
     }
 
-    public void update(int idx, Person person) {
+    public Person update(int idx, PersonVO personVO) {
         Person old = personRepository.findById(idx).get();
-        old.setFirstName(person.getFirstName());
-        old.setLastName(person.getLastName());
-        personRepository.save(old);
+        old.setFirstName(personVO.getFirstName());
+        old.setLastName(personVO.getLastName());
         logger.info("Updated person {}", old);
+        return personRepository.save(old);
     }
 
-    public void remove(int idx) {
-        Person person = personRepository.findById(idx).get();
-        personRepository.delete(person);
-        logger.info("Removed person {}", person);
+    public boolean remove(int idx) {
+        Person person = findById(idx);
+        if (person != null) {
+            personRepository.delete(person);
+            logger.info("Removed person {}", person);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

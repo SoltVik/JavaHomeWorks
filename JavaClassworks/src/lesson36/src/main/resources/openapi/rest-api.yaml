@@ -9,8 +9,30 @@ tags:
     description: Simple rest CRUD API
 
 paths:
-  #/add:
-  #  post:
+  /add:
+    post:
+      tags:
+        - SimpleRest
+      summary: Add one record
+      description: Add one record
+      operationId: add
+      requestBody:
+        description: Data for person
+        required: true
+        content:
+         application/json:
+           schema:
+             type: PersonVO
+      responses:
+        '201':
+          description: Successful operation'
+          content:
+            application/json:
+              schema:
+                type: PersonVO
+        '404':
+          description: Request failed - No items
+
 
   /getAll:
     get:
@@ -27,7 +49,8 @@ paths:
               schema:
                 type: array
                 items:
-                  type: Person
+                  type: PersonVO
+
         '404':
           description: Request failed - No items
 
@@ -46,12 +69,36 @@ paths:
           content:
             application/json:
               schema:
-                type: Person
+                type: PersonVO
         '404':
           description: Request failed - No items
 
-  #/update/{id}:
-  #  put:
+
+  /update/{id}:
+    put:
+      tags:
+        - SimpleRest
+      summary: Update one record
+      description: Update one record
+      operationId: update
+      parameters:
+        - $ref: '#/components/parameters/id'
+      requestBody:
+        description: Data to update
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: PersonVO
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: PersonVO
+        '404':
+          description: Request failed - No items
 
   /delete/{id}:
     delete:
@@ -64,9 +111,7 @@ paths:
         - $ref: '#/components/parameters/id'
       responses:
         200:
-          content:
-            application/json: { }
-          description: "deleted person"
+          description: Successful deleted
         '404':
           description: Request failed - No items
 
